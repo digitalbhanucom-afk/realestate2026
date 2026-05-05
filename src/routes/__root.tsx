@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FloatingActions } from "@/components/FloatingActions";
+import { EnquireProvider } from "@/components/EnquireDialog";
 
 import appCss from "../styles.css?url";
 
@@ -41,8 +42,15 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head><HeadContent /></head>
+    <html lang="en" className="dark">
+      <head>
+        <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme')||'dark';var r=document.documentElement;r.classList.remove('dark','light');r.classList.add(t);r.style.colorScheme=t;}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         {children}
         <Scripts />
@@ -53,13 +61,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <>
+    <EnquireProvider>
       <SiteHeader />
       <main className="pt-20 min-h-screen">
         <Outlet />
       </main>
       <SiteFooter />
       <FloatingActions />
-    </>
+    </EnquireProvider>
   );
 }
