@@ -34,7 +34,7 @@
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
-:root {
+:root, .dark {
   --radius: 0.5rem;
   --background: oklch(0.14 0.01 60);
   --foreground: oklch(0.96 0.01 80);
