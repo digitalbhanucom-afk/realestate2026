@@ -54,13 +54,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <>
+    <EnquireProvider>
       <SiteHeader />
       <main className="pt-20 min-h-screen">
         <Outlet />
       </main>
       <SiteFooter />
       <FloatingActions />
-    </>
+    </EnquireProvider>
   );
 }
